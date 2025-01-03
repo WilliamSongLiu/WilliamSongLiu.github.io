@@ -1,5 +1,5 @@
 .projects {
-  background-color: #f8f9fa;
+  background-color: #0f0f0f;
 }
 
 .projects-grid {
@@ -10,11 +10,12 @@
 }
 
 .project-card {
-  background: white;
+  background: #1a1a1a;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
+  border: 1px solid #2a2a2a;
 }
 
 .project-card:hover {
@@ -50,16 +51,18 @@
 .project-links a {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background-color: var(--accent-color);
-  color: white;
+  background-color: transparent;
+  color: var(--accent-color);
   text-decoration: none;
   border-radius: 5px;
   font-size: 0.9rem;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  border: 1px solid var(--accent-color);
 }
 
 .project-links a:hover {
-  background-color: #0056b3;
+  background-color: var(--accent-color);
+  color: #0a0a0a;
 }
 
 @media (max-width: 768px) {

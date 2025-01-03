@@ -18,42 +18,47 @@
 .form-group textarea {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #ddd;
+  border: 1px solid #2a2a2a;
   border-radius: 5px;
   font-size: 1rem;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
+  background-color: #1a1a1a;
+  color: var(--primary-color);
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
   border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.1);
 }
 
 button[type="submit"] {
   display: block;
   width: 100%;
   padding: 1rem;
-  background-color: var(--accent-color);
-  color: white;
-  border: none;
+  background-color: transparent;
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
   border-radius: 5px;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 button[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: var(--accent-color);
+  color: #0a0a0a;
 }
 
 .success-message {
   text-align: center;
   padding: 2rem;
-  background-color: #d4edda;
+  background-color: rgba(100, 255, 218, 0.1);
+  border: 1px solid var(--accent-color);
   border-radius: 5px;
-  color: #155724;
+  color: var(--accent-color);
 }
 
 @media (max-width: 768px) {
