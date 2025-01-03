@@ -1,6 +1,7 @@
 import { useState, useRef } from "react"
-import { Box, Html } from "@react-three/drei"
+import { Box } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
+import type { Mesh } from "three"
 import Popup from "./popup"
 
 interface MonitorProps {
@@ -11,7 +12,7 @@ interface MonitorProps {
 
 export default function Monitor({ position, rotation, isClickable = false }: MonitorProps) {
   const [showPopup, setShowPopup] = useState(false)
-  const indicatorRef = useRef<THREE.Mesh>(null)
+  const indicatorRef = useRef<Mesh>(null)
 
   const handleClick = () => {
     if (isClickable) {
@@ -28,29 +29,26 @@ export default function Monitor({ position, rotation, isClickable = false }: Mon
   return (
     <group position={position} rotation={rotation}>
       {/* Screen */}
-      <Box args={[1.2, 0.7, 0.05]} castShadow onClick={handleClick}>
-        <meshStandardMaterial color={isClickable ? "#4169E1" : "#000000"} />
+      <Box args={[1.4, 0.8, 0.05]} castShadow onClick={handleClick}>
+        <meshStandardMaterial color="#1A1A1A" />
       </Box>
-      {/* Stand */}
-      <Box args={[0.05, 0.5, 0.05]} position={[0, -0.3, 0]} castShadow>
-        <meshStandardMaterial color="#A9A9A9" />
+      {/* Screen Content */}
+      <Box args={[1.35, 0.75, 0.01]} position={[0, 0, 0.03]} castShadow onClick={handleClick}>
+        <meshStandardMaterial color="#FFFFFF" emissive="#FFFFFF" emissiveIntensity={0.2} />
       </Box>
-      {/* Base */}
-      <Box args={[0.3, 0.05, 0.2]} position={[0, -0.55, 0]} castShadow>
-        <meshStandardMaterial color="#A9A9A9" />
+      {/* Stand Neck */}
+      <Box args={[0.08, 0.4, 0.08]} position={[0, -0.4, 0]} castShadow>
+        <meshStandardMaterial color="#2A2A2A" />
+      </Box>
+      {/* Stand Base */}
+      <Box args={[0.4, 0.02, 0.25]} position={[0, -0.6, 0]} castShadow>
+        <meshStandardMaterial color="#2A2A2A" />
       </Box>
       {isClickable && (
-        <mesh ref={indicatorRef} position={[0, 0.45, 0]}>
-          <sphereGeometry args={[0.05, 32, 32]} />
-          <meshStandardMaterial color="#FFD700" emissive="#FFD700" emissiveIntensity={0.5} />
+        <mesh ref={indicatorRef} position={[0, 0.5, 0]}>
+          <sphereGeometry args={[0.04, 32, 32]} />
+          <meshStandardMaterial color="#4CAF50" emissive="#4CAF50" emissiveIntensity={0.5} />
         </mesh>
-      )}
-      {isClickable && (
-        <Html center position={[0, 0.6, 0]}>
-          <div className="bg-yellow-400 text-black px-2 py-1 rounded-full text-sm font-bold">
-            Click me!
-          </div>
-        </Html>
       )}
       {showPopup && <Popup onClose={() => setShowPopup(false)} />}
     </group>

@@ -10,10 +10,16 @@ export default function Scene() {
   return (
     <div className="w-full h-screen">
       <Canvas shadows>
-        <PerspectiveCamera makeDefault position={[10, 10, 10]} />
-        <OrbitControls enablePan={false} minPolarAngle={Math.PI / 6} maxPolarAngle={Math.PI / 2.5} />
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[5, 5, 5]} castShadow />
+        <PerspectiveCamera makeDefault position={[8, 8, 8]} />
+        <OrbitControls
+          enablePan={false}
+          enableZoom={false}
+          enableRotate={false}
+          minPolarAngle={Math.PI / 4}
+          maxPolarAngle={Math.PI / 4}
+        />
+        <ambientLight intensity={0.7} />
+        <directionalLight position={[5, 8, 5]} castShadow intensity={0.8} />
         <Room />
         <Desk />
         <Bookshelf />
