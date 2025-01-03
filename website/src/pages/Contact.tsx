@@ -1,10 +1,52 @@
 import React from 'react'
+import { useForm, ValidationError } from '@formspree/react'
 
 export default function Contact() {
+  const [state, handleSubmit] = useForm("xdkkpekr")
+
   return (
     <div className="page contact-page">
       <div className="contact-container">
         <h2>Get in Touch</h2>
+        <form onSubmit={handleSubmit} className="contact-form">
+          <div className="form-group">
+            <input
+              id="email"
+              type="email"
+              name="email"
+              placeholder="Your email"
+              required
+            />
+            <ValidationError
+              prefix="Email"
+              field="email"
+              errors={state.errors}
+            />
+          </div>
+          <div className="form-group">
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Your message"
+              required
+            />
+            <ValidationError
+              prefix="Message"
+              field="message"
+              errors={state.errors}
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={state.submitting}
+            className="submit-button"
+          >
+            {state.submitting ? 'Sending...' : 'Send Message'}
+          </button>
+          {state.succeeded && (
+            <p className="success-message">Thanks for your message!</p>
+          )}
+        </form>
         <div className="contact-links">
           <a href="https://github.com/WilliamSongLiu" target="_blank" rel="noopener noreferrer" className="contact-link">
             <svg className="contact-icon" viewBox="0 0 24 24" width="24" height="24">
