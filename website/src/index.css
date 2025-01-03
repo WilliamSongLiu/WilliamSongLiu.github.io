@@ -186,7 +186,7 @@ body {
 
 /* Contact Page Styles */
 .contact-container {
-  padding: 6rem 2rem 2rem;
+  padding: 0 2rem;
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
@@ -225,4 +225,19 @@ body {
 .contact-icon {
   width: 24px;
   height: 24px;
+}
+
+/* Projects specific styles */
+.projects-page {
+  min-height: 100%;
+  overflow-y: auto;
+}
+
+/* Contact specific styles */
+.contact-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
 }

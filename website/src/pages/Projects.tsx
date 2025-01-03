@@ -14,15 +14,27 @@ interface Project {
 const projects: Project[] = [
   {
     title: "Project One",
-    description: "Description of your first project. You can write multiple lines of text here explaining what the project does, what technologies were used, and what you learned.",
+    description: "A sophisticated machine learning model that predicts user behavior based on historical data. Built with Python, TensorFlow, and deployed on AWS. Features include real-time predictions, automated model retraining, and a REST API for easy integration.",
     link: "https://github.com/yourusername/project1",
     image: "/project1.png"
   },
   {
     title: "Project Two",
-    description: "Description of your second project. This is a placeholder text that you should replace with actual project details.",
+    description: "A modern web application for collaborative document editing. Built with React, Node.js, and Socket.IO. Features real-time collaboration, version history, and automatic saving. Used by over 1,000 active users.",
     link: "https://github.com/yourusername/project2",
     image: "/project2.png"
+  },
+  {
+    title: "Project Three",
+    description: "An iOS mobile app for tracking personal fitness goals and nutrition. Developed using Swift and CoreML for personalized workout recommendations. Integrates with HealthKit and features custom workout plans, meal tracking, and progress visualization.",
+    link: "https://github.com/yourusername/project3",
+    image: "/project3.png"
+  },
+  {
+    title: "Project Four",
+    description: "A blockchain-based voting system that ensures secure and transparent elections. Built with Solidity and Ethereum smart contracts. Features include voter verification, real-time vote counting, and audit trails.",
+    link: "https://github.com/yourusername/project4",
+    image: "/project4.png"
   }
 ]
 
