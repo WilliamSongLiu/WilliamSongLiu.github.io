@@ -212,19 +212,20 @@ body {
   pointer-events: auto;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .contact-container h2 {
-  font-size: 3.5rem;
-  margin-bottom: 3rem;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
   font-weight: 800;
 }
 
 .contact-links {
   display: flex;
   justify-content: center;
-  gap: 3rem;
+  gap: 2rem;
+  margin-top: 0.5rem;
 }
 
 .contact-link {
@@ -301,20 +302,19 @@ body {
 
 /* Contact Form Styles */
 .contact-form {
-  margin-bottom: 3rem;
   width: 100%;
-  max-width: 500px;
-  margin: 0 auto 3rem;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 1rem;
+  padding: 0.8rem 1rem;
   border: none;
   border-radius: 0.5rem;
   background: rgba(255, 255, 255, 0.8);
@@ -325,7 +325,7 @@ body {
 }
 
 .form-group textarea {
-  min-height: 150px;
+  min-height: 120px;
   resize: vertical;
 }
 
@@ -338,7 +338,7 @@ body {
 
 .submit-button {
   width: 100%;
-  padding: 1rem;
+  padding: 0.8rem 1rem;
   border: none;
   border-radius: 0.5rem;
   background: #1a1a1a;
@@ -361,8 +361,8 @@ body {
 }
 
 .success-message {
-  margin-top: 1rem;
-  padding: 1rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
   background: rgba(76, 175, 80, 0.1);
   border-radius: 0.5rem;
   color: #2e7d32;
