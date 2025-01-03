@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
 :root {
   font-family: 'Inter', system-ui, sans-serif;
@@ -10,6 +10,7 @@ body {
   margin: 0;
   min-height: 100vh;
   background: linear-gradient(135deg, #e0f7ff 0%, #87CEEB 100%);
+  overflow: hidden;
 }
 
 .scene-container {
@@ -24,14 +25,17 @@ body {
 .content-overlay {
   position: relative;
   z-index: 1;
-  padding: 2rem;
+  padding: 2rem 3rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .navbar {
   display: flex;
   justify-content: flex-end;
-  gap: 2rem;
-  margin-bottom: 2rem;
+  gap: 3rem;
+  padding: 1rem 0;
 }
 
 .nav-link {
@@ -39,17 +43,39 @@ body {
   text-decoration: none;
   font-weight: 600;
   font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  position: relative;
   transition: color 0.2s;
 }
 
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+
 .nav-link:hover {
-  color: #4a4a4a;
+  color: #000000;
+}
+
+.nav-link:hover::before {
+  border-color: #1a1a1a;
 }
 
 .title {
-  font-size: 3rem;
-  font-weight: 700;
+  font-size: 4.5rem;
+  font-weight: 800;
   color: #1a1a1a;
   margin: 0;
-  max-width: 80%;
+  position: absolute;
+  top: 35%;
+  left: 35%;
+  transform: translate(-50%, -50%);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
