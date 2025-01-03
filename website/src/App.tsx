@@ -1,15 +1,11 @@
-import { Canvas } from '@react-three/fiber'
+import Scene from "./scene"
 
 function App() {
   return (
-    <Canvas>
-      <mesh>
-        <boxGeometry args={[2, 2, 2]} />
-        <meshPhongMaterial />
-      </mesh>
-      <ambientLight intensity={0.1} />
-      <directionalLight position={[0, 0, 5]} color="red" />
-    </Canvas>
+    <main className="flex min-h-screen flex-col items-center justify-between p-4">
+      <h1 className="text-4xl font-bold text-center mb-4 text-indigo-600">William Liu</h1>
+      <Scene />
+    </main>
   )
 }
 
