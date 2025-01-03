@@ -29,7 +29,7 @@ function App() {
         <nav className="navbar">
           {isPageOpen && (
             <button onClick={() => handleNavigation('home')} className="nav-link back-link">
-              ← Back
+              <span className="arrow">←</span> Back
             </button>
           )}
           <div className="nav-links">
