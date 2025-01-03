@@ -22,8 +22,8 @@ const Hero: FC = () => {
     mountRef.current.appendChild(renderer.domElement);
 
     // Create different geometries with varied sizes
-    const tetraGeometry = new THREE.TetrahedronGeometry(2);
-    const icosaGeometry = new THREE.IcosahedronGeometry(1.2);
+    const cubeGeometry = new THREE.BoxGeometry(2, 2, 2);
+    const pyramidGeometry = new THREE.TetrahedronGeometry(1.2);
     const octaGeometry = new THREE.OctahedronGeometry(1.6);
 
     // Create wireframe materials with different colors
@@ -46,14 +46,14 @@ const Hero: FC = () => {
       return new THREE.LineSegments(edges, material);
     };
 
-    const shape1 = createWireframeShape(tetraGeometry, materials[0]);
-    const shape2 = createWireframeShape(icosaGeometry, materials[1]);
+    const shape1 = createWireframeShape(cubeGeometry, materials[0]);
+    const shape2 = createWireframeShape(pyramidGeometry, materials[1]);
     const shape3 = createWireframeShape(octaGeometry, materials[2]);
 
     // Position shapes further apart
-    shape1.position.set(-2.8, 0.3, -1);
-    shape2.position.set(0, -0.2, 1);
-    shape3.position.set(2.8, 0.1, -2);
+    shape1.position.set(-3, 0.3, -1);
+    shape2.position.set(1, -0.2, 1);
+    shape3.position.set(2.5, 0.1, -2);
 
     // Set random initial rotations
     [shape1, shape2, shape3].forEach(shape => {
