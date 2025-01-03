@@ -9,7 +9,8 @@ function App() {
   const [isTransitioning, setIsTransitioning] = useState(false)
 
   const handleNavigation = (page: 'home' | 'projects' | 'contact') => {
-    if (page === currentPage || isTransitioning) return
+    if (page === currentPage) return; // Prevent animation if same page
+
     setIsTransitioning(true)
     setTimeout(() => {
       setCurrentPage(page)
@@ -17,12 +18,12 @@ function App() {
     }, 500)
   }
 
-  const isBlurred = currentPage !== 'home'
+  const isPageOpen = currentPage !== 'home'
 
   return (
     <main>
-      <div className={`scene-container ${isBlurred ? 'blurred' : ''}`}>
-        <Scene />
+      <div className="scene-container">
+        <Scene isBlurred={isPageOpen} />
       </div>
       <div className="content-overlay">
         <nav className="navbar">
@@ -32,7 +33,12 @@ function App() {
           >
             Projects
           </button>
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="nav-link">
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-link"
+          >
             Resume
           </a>
           <button
