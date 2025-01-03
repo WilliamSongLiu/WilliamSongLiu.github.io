@@ -39,9 +39,27 @@ const Hero: FC = () => {
     const greenCube = createCubeWithEdges(greenMaterial);
     const blueCube = createCubeWithEdges(blueMaterial);
 
-    redCube.position.set(-2, 0, 0);
-    greenCube.position.set(0, 0, 0);
-    blueCube.position.set(2, 0, 0);
+    // Set random initial rotations
+    redCube.rotation.set(
+      Math.random() * Math.PI * 2,
+      Math.random() * Math.PI * 2,
+      Math.random() * Math.PI * 2
+    );
+    greenCube.rotation.set(
+      Math.random() * Math.PI * 2,
+      Math.random() * Math.PI * 2,
+      Math.random() * Math.PI * 2
+    );
+    blueCube.rotation.set(
+      Math.random() * Math.PI * 2,
+      Math.random() * Math.PI * 2,
+      Math.random() * Math.PI * 2
+    );
+
+    // Position cubes closer together with different starting heights
+    redCube.position.set(-1, 0.3, 0);
+    greenCube.position.set(0, -0.2, 0);
+    blueCube.position.set(1, 0.1, 0);
 
     scene.add(redCube);
     scene.add(greenCube);
@@ -54,18 +72,12 @@ const Hero: FC = () => {
       requestAnimationFrame(animate);
 
       const time = Date.now() * 0.001;
+      const amplitude = 0.15; // Reduced amplitude
 
-      // Smaller, synchronized movement
-      const yOffset = Math.sin(time) * 0.2; // Reduced amplitude
-      const rotationOffset = Math.sin(time) * 0.1; // Reduced rotation, synchronized with movement
-
-      redCube.position.y = yOffset;
-      greenCube.position.y = yOffset;
-      blueCube.position.y = yOffset;
-
-      redCube.rotation.x = rotationOffset;
-      greenCube.rotation.x = rotationOffset;
-      blueCube.rotation.x = rotationOffset;
+      // Offset animations
+      redCube.position.y = 0.3 + Math.sin(time) * amplitude;
+      greenCube.position.y = -0.2 + Math.sin(time + (2 * Math.PI / 3)) * amplitude;
+      blueCube.position.y = 0.1 + Math.sin(time + (4 * Math.PI / 3)) * amplitude;
 
       renderer.render(scene, camera);
     };
