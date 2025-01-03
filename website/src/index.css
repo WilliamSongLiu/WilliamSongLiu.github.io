@@ -267,14 +267,12 @@ body {
 .back-link {
   opacity: 0;
   animation: fadeIn 0.3s ease forwards;
-  margin-left: -1rem;
+  margin-right: auto;
+  padding-left: 0;
 }
 
 .navbar::before {
-  content: '';
-  width: 100px;
-  visibility: hidden;
-  margin-left: -1rem;
+  display: none;
 }
 
 @keyframes fadeIn {
