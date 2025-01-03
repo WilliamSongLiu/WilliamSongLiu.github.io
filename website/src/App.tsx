@@ -27,31 +27,38 @@ function App() {
       </div>
       <div className="content-overlay">
         <nav className="navbar">
-          <button
-            onClick={() => handleNavigation('projects')}
-            className={`nav-link ${currentPage === 'projects' ? 'active' : ''}`}
-          >
-            Projects
-          </button>
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="nav-link"
-          >
-            Resume
-          </a>
-          <button
-            onClick={() => handleNavigation('contact')}
-            className={`nav-link ${currentPage === 'contact' ? 'active' : ''}`}
-          >
-            Contact
-          </button>
+          {isPageOpen && (
+            <button onClick={() => handleNavigation('home')} className="nav-link back-link">
+              ← Back
+            </button>
+          )}
+          <div className="nav-links">
+            <button
+              onClick={() => handleNavigation('projects')}
+              className={`nav-link ${currentPage === 'projects' ? 'active' : ''}`}
+            >
+              Projects
+            </button>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nav-link"
+            >
+              Resume
+            </a>
+            <button
+              onClick={() => handleNavigation('contact')}
+              className={`nav-link ${currentPage === 'contact' ? 'active' : ''}`}
+            >
+              Contact
+            </button>
+          </div>
         </nav>
         <div className={`page-container ${isTransitioning ? 'transitioning' : ''}`}>
           {currentPage === 'home' && <h1 className="title">William Liu</h1>}
-          {currentPage === 'projects' && <Projects onBack={() => handleNavigation('home')} />}
-          {currentPage === 'contact' && <Contact onBack={() => handleNavigation('home')} />}
+          {currentPage === 'projects' && <Projects />}
+          {currentPage === 'contact' && <Contact />}
         </div>
       </div>
     </main>

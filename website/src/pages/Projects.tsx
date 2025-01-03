@@ -1,9 +1,5 @@
 import React from 'react'
 
-interface ProjectsProps {
-  onBack: () => void;
-}
-
 interface Project {
   title: string;
   description: string;
@@ -38,12 +34,9 @@ const projects: Project[] = [
   }
 ]
 
-export default function Projects({ onBack }: ProjectsProps) {
+export default function Projects() {
   return (
     <div className="page projects-page">
-      <button onClick={onBack} className="back-button">
-        ← Back
-      </button>
       <div className="projects-container">
         {projects.map((project, index) => (
           <div key={index} className="project-card">

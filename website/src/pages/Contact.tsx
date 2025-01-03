@@ -1,15 +1,8 @@
 import React from 'react'
 
-interface ContactProps {
-  onBack: () => void;
-}
-
-export default function Contact({ onBack }: ContactProps) {
+export default function Contact() {
   return (
     <div className="page contact-page">
-      <button onClick={onBack} className="back-button">
-        ← Back
-      </button>
       <div className="contact-container">
         <h2>Get in Touch</h2>
         <div className="contact-links">
