@@ -15,69 +15,87 @@ const Hero: FC = () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     mountRef.current.appendChild(renderer.domElement);
 
-    // Create cubes with white edges
-    const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
-    const edges = new THREE.EdgesGeometry(geometry);
-    const lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff });
+    // Create different geometries
+    const cubeGeometry = new THREE.BoxGeometry(0.8, 0.8, 0.8);
+    const icosaGeometry = new THREE.IcosahedronGeometry(0.6);
+    const octaGeometry = new THREE.OctahedronGeometry(0.7);
 
-    // Create materials with transparency
-    const redMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000, transparent: true, opacity: 0.7 });
-    const greenMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00, transparent: true, opacity: 0.7 });
-    const blueMaterial = new THREE.MeshBasicMaterial({ color: 0x0000ff, transparent: true, opacity: 0.7 });
-
-    // Create cube groups (cube + edges)
-    const createCubeWithEdges = (material: THREE.Material) => {
-      const group = new THREE.Group();
-      const cube = new THREE.Mesh(geometry, material);
-      const line = new THREE.LineSegments(edges, lineMaterial);
-      group.add(cube);
-      group.add(line);
-      return group;
+    // Create wireframe materials with different colors
+    const createWireframe = (color: number) => {
+      return new THREE.LineBasicMaterial({
+        color: color,
+        linewidth: 1
+      });
     };
 
-    const redCube = createCubeWithEdges(redMaterial);
-    const greenCube = createCubeWithEdges(greenMaterial);
-    const blueCube = createCubeWithEdges(blueMaterial);
+    const materials = [
+      createWireframe(0xf7d794), // Golden
+      createWireframe(0xff6b81), // Pink
+      createWireframe(0x74b9ff)  // Blue
+    ];
+
+    // Convert geometries to wireframe edges
+    const createWireframeShape = (geometry: THREE.BufferGeometry, material: THREE.Material) => {
+      const edges = new THREE.EdgesGeometry(geometry);
+      return new THREE.LineSegments(edges, material);
+    };
+
+    const shape1 = createWireframeShape(cubeGeometry, materials[0]);
+    const shape2 = createWireframeShape(icosaGeometry, materials[1]);
+    const shape3 = createWireframeShape(octaGeometry, materials[2]);
+
+    // Position shapes
+    shape1.position.set(-1.2, 0.3, 0);
+    shape2.position.set(0, -0.2, 0);
+    shape3.position.set(1.2, 0.1, 0);
 
     // Set random initial rotations
-    redCube.rotation.set(
-      Math.random() * Math.PI * 2,
-      Math.random() * Math.PI * 2,
-      Math.random() * Math.PI * 2
-    );
-    greenCube.rotation.set(
-      Math.random() * Math.PI * 2,
-      Math.random() * Math.PI * 2,
-      Math.random() * Math.PI * 2
-    );
-    blueCube.rotation.set(
-      Math.random() * Math.PI * 2,
-      Math.random() * Math.PI * 2,
-      Math.random() * Math.PI * 2
-    );
+    [shape1, shape2, shape3].forEach(shape => {
+      shape.rotation.set(
+        Math.random() * Math.PI * 2,
+        Math.random() * Math.PI * 2,
+        Math.random() * Math.PI * 2
+      );
+    });
 
-    // Position cubes closer together with different starting heights
-    redCube.position.set(-1, 0.3, 0);
-    greenCube.position.set(0, -0.2, 0);
-    blueCube.position.set(1, 0.1, 0);
-
-    scene.add(redCube);
-    scene.add(greenCube);
-    scene.add(blueCube);
+    scene.add(shape1);
+    scene.add(shape2);
+    scene.add(shape3);
 
     camera.position.z = 5;
+
+    // Mouse interaction
+    const mouse = {
+      x: 0,
+      y: 0
+    };
+
+    const handleMouseMove = (event: MouseEvent) => {
+      // Convert mouse position to normalized device coordinates (-1 to +1)
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
 
     // Animation
     const animate = () => {
       requestAnimationFrame(animate);
 
       const time = Date.now() * 0.001;
-      const amplitude = 0.15; // Reduced amplitude
+      const amplitude = 0.15;
 
-      // Offset animations
-      redCube.position.y = 0.3 + Math.sin(time) * amplitude;
-      greenCube.position.y = -0.2 + Math.sin(time + (2 * Math.PI / 3)) * amplitude;
-      blueCube.position.y = 0.1 + Math.sin(time + (4 * Math.PI / 3)) * amplitude;
+      // Vertical floating animation
+      shape1.position.y = 0.3 + Math.sin(time) * amplitude;
+      shape2.position.y = -0.2 + Math.sin(time + (2 * Math.PI / 3)) * amplitude;
+      shape3.position.y = 0.1 + Math.sin(time + (4 * Math.PI / 3)) * amplitude;
+
+      // Rotate shapes based on mouse position
+      const rotationSpeed = 0.5;
+      [shape1, shape2, shape3].forEach(shape => {
+        shape.rotation.x += (-mouse.y * rotationSpeed - shape.rotation.x) * 0.05;
+        shape.rotation.y += (mouse.x * rotationSpeed - shape.rotation.y) * 0.05;
+      });
 
       renderer.render(scene, camera);
     };
@@ -93,6 +111,7 @@ const Hero: FC = () => {
     window.addEventListener('resize', handleResize);
 
     return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('resize', handleResize);
       mountRef.current?.removeChild(renderer.domElement);
     };
