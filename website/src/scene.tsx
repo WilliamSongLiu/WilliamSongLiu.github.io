@@ -1,3 +1,5 @@
+"use client"
+
 import { Canvas } from "@react-three/fiber"
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei"
 import Room from "./room"
