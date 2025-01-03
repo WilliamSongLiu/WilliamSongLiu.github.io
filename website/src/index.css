@@ -22,8 +22,8 @@ body {
   transition: filter 0.5s ease;
 }
 
-.scene-blur {
-  filter: blur(8px);
+.scene-container.blurred {
+  filter: blur(10px);
 }
 
 .content-overlay {
@@ -40,6 +40,10 @@ body {
   justify-content: flex-end;
   gap: 3rem;
   padding: 1rem 0;
+  position: fixed;
+  top: 2rem;
+  right: 3rem;
+  z-index: 2;
 }
 
 .nav-link {
@@ -66,12 +70,14 @@ body {
   transition: border-color 0.3s;
 }
 
-.nav-link:hover {
-  color: #000000;
+.nav-link:hover::before,
+.nav-link.active::before {
+  border-color: #1a1a1a;
 }
 
-.nav-link:hover::before {
-  border-color: #1a1a1a;
+.nav-link:hover,
+.nav-link.active {
+  color: #000000;
 }
 
 .title {
@@ -106,7 +112,7 @@ body {
 }
 
 .back-button {
-  position: absolute;
+  position: fixed;
   top: 2rem;
   left: 3rem;
   background: none;
@@ -117,6 +123,7 @@ body {
   cursor: pointer;
   padding: 0.4rem 1rem 0.3rem;
   transition: color 0.2s;
+  z-index: 2;
 }
 
 .back-button:hover {
@@ -125,9 +132,11 @@ body {
 
 /* Projects Page Styles */
 .projects-container {
-  padding: 6rem 2rem 2rem;
+  padding: 8rem 2rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
+  overflow-y: auto;
+  max-height: calc(100vh - 10rem);
 }
 
 .project-card {
@@ -219,11 +228,4 @@ body {
 .contact-icon {
   width: 24px;
   height: 24px;
-}
-
-.projects-page {
-  position: relative;
-  min-height: 100vh;
-  overflow-y: auto;
-  padding-bottom: 4rem;
 }
