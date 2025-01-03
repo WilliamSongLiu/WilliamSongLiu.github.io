@@ -1,10 +1,20 @@
 import Scene from "./scene"
+import "./index.css"
 
 function App() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-4">
-      <h1 className="text-4xl font-bold text-center mb-4 text-indigo-600">William Liu</h1>
-      <Scene />
+    <main>
+      <div className="scene-container">
+        <Scene />
+      </div>
+      <div className="content-overlay">
+        <nav className="navbar">
+          <a href="#projects" className="nav-link">Projects</a>
+          <a href="#resume" className="nav-link">Resume</a>
+          <a href="#contact" className="nav-link">Contact</a>
+        </nav>
+        <h1 className="title">William Liu</h1>
+      </div>
     </main>
   )
 }

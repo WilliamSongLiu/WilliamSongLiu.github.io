@@ -8,22 +8,20 @@ import Bookshelf from "./bookshelf"
 
 export default function Scene() {
   return (
-    <div className="w-full h-screen">
-      <Canvas shadows>
-        <PerspectiveCamera makeDefault position={[8, 8, 8]} />
-        <OrbitControls
-          enablePan={false}
-          enableZoom={false}
-          enableRotate={false}
-          minPolarAngle={Math.PI / 4}
-          maxPolarAngle={Math.PI / 4}
-        />
-        <ambientLight intensity={0.7} />
-        <directionalLight position={[5, 8, 5]} castShadow intensity={0.8} />
-        <Room />
-        <Desk />
-        <Bookshelf />
-      </Canvas>
-    </div>
+    <Canvas shadows style={{ width: '100%', height: '100%' }}>
+      <PerspectiveCamera makeDefault position={[8, 8, 8]} />
+      <OrbitControls
+        enablePan={false}
+        enableZoom={false}
+        enableRotate={false}
+        minPolarAngle={Math.PI / 4}
+        maxPolarAngle={Math.PI / 4}
+      />
+      <ambientLight intensity={0.7} />
+      <directionalLight position={[5, 8, 5]} castShadow intensity={0.8} />
+      <Room />
+      <Desk />
+      <Bookshelf />
+    </Canvas>
   )
 }
