@@ -185,6 +185,18 @@ body {
 }
 
 /* Contact Page Styles */
+.contact-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 10vh;
+}
+
 .contact-container {
   padding: 0 2rem;
   max-width: 600px;
@@ -193,8 +205,9 @@ body {
 }
 
 .contact-container h2 {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
+  font-size: 3.5rem;
+  margin-bottom: 3rem;
+  font-weight: 800;
 }
 
 .contact-links {
@@ -206,7 +219,7 @@ body {
 .contact-link {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
   color: #1a1a1a;
   text-decoration: none;
   font-weight: 600;
