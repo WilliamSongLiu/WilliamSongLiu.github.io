@@ -7,18 +7,28 @@ import "./index.css"
 function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'projects' | 'contact'>('home')
   const [isTransitioning, setIsTransitioning] = useState(false)
+  const [isBlurred, setIsBlurred] = useState(false)
 
   const handleNavigation = (page: 'home' | 'projects' | 'contact') => {
+    if (page === currentPage) return;
+
     setIsTransitioning(true)
+    setIsBlurred(true)
+
     setTimeout(() => {
       setCurrentPage(page)
       setIsTransitioning(false)
-    }, 500) // Half of our transition duration
+    }, 500)
+
+    // Keep blur effect a bit longer for smoother transition
+    setTimeout(() => {
+      setIsBlurred(false)
+    }, 800)
   }
 
   return (
     <main>
-      <div className="scene-container">
+      <div className={`scene-container ${isBlurred ? 'scene-blur' : ''}`}>
         <Scene />
       </div>
       <div className="content-overlay">
