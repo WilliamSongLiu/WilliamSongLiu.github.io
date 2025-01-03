@@ -305,15 +305,21 @@ body {
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .form-group {
   margin-bottom: 1rem;
+  width: 100%;
+  max-width: 360px;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
+  box-sizing: border-box;
   padding: 0.8rem 1rem;
   border: none;
   border-radius: 0.5rem;
@@ -337,7 +343,7 @@ body {
 }
 
 .submit-button {
-  width: 100%;
+  width: 360px;
   padding: 0.8rem 1rem;
   border: none;
   border-radius: 0.5rem;
