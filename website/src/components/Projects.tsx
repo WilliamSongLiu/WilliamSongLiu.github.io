@@ -12,7 +12,7 @@ const projects: Project[] = [
   {
     title: "AI Research Project",
     description: "Developed novel machine learning algorithms for natural language processing, achieving state-of-the-art results on multiple benchmarks.",
-    image: "https://via.placeholder.com/800x400",
+    image: "https://via.placeholder.com/400x300",
     links: [
       { text: "GitHub", url: "#" },
       { text: "Paper", url: "#" }
@@ -21,7 +21,7 @@ const projects: Project[] = [
   {
     title: "VR Game Development",
     description: "Created an immersive virtual reality game using Unity and OpenXR, featuring innovative interaction mechanics.",
-    image: "https://via.placeholder.com/800x400",
+    image: "https://via.placeholder.com/400x300",
     links: [
       { text: "Play Store", url: "#" },
       { text: "Demo Video", url: "#" }
@@ -30,7 +30,7 @@ const projects: Project[] = [
   {
     title: "Blockchain DApp",
     description: "Built a decentralized application for NFT trading with smart contracts on Ethereum, supporting multiple token standards.",
-    image: "https://via.placeholder.com/800x400",
+    image: "https://via.placeholder.com/400x300",
     links: [
       { text: "Live Demo", url: "#" }
     ]
@@ -38,7 +38,7 @@ const projects: Project[] = [
   {
     title: "Trading Bot Platform",
     description: "Developed an automated trading platform with machine learning-based decision making and real-time market analysis.",
-    image: "https://via.placeholder.com/800x400",
+    image: "https://via.placeholder.com/400x300",
     links: [
       { text: "Documentation", url: "#" },
       { text: "GitHub", url: "#" }
@@ -52,11 +52,7 @@ const Projects: FC = () => {
       <h2>Projects</h2>
       <div className="projects-container">
         {projects.map((project, index) => (
-          <div key={index} className={`project-card ${index % 2 === 0 ? 'image-left' : 'image-right'}`}>
-            <div className="project-image-container">
-              <img src={project.image} alt={project.title} />
-              <div className="diagonal-overlay"></div>
-            </div>
+          <div key={index} className={`project-item ${index % 2 === 0 ? 'image-right' : 'image-left'}`}>
             <div className="project-content">
               <h3>{project.title}</h3>
               <p>{project.description}</p>
@@ -72,6 +68,9 @@ const Projects: FC = () => {
                   </a>
                 ))}
               </div>
+            </div>
+            <div className="project-image-container">
+              <img src={project.image} alt={project.title} />
             </div>
           </div>
         ))}
