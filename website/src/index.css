@@ -194,7 +194,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-bottom: 10vh;
+  transform: translateY(-10%);
+  pointer-events: none;
 }
 
 .contact-container {
@@ -202,6 +203,7 @@ body {
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
+  pointer-events: auto;
 }
 
 .contact-container h2 {
@@ -213,7 +215,7 @@ body {
 .contact-links {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .contact-link {
@@ -228,10 +230,11 @@ body {
   border-radius: 0.5rem;
   background: rgba(255, 255, 255, 0.8);
   transition: all 0.2s;
+  backdrop-filter: blur(10px);
 }
 
 .contact-link:hover {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   transform: translateY(-2px);
 }
 
