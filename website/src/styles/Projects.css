@@ -1,5 +1,10 @@
 .projects {
-  background-color: #0f0f0f;
+  background: linear-gradient(
+    180deg,
+    #0d0d0d 0%,
+    #150920 50%,
+    #0d0d0d 100%
+  );
 }
 
 .projects-grid {
