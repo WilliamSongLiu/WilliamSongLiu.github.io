@@ -57,27 +57,28 @@ const Hero: FC = () => {
     );
 
     // Position cubes closer together with different starting heights
-    redCube.position.set(-1, 0.3, 0);
-    greenCube.position.set(0, -0.2, 0);
-    blueCube.position.set(1, 0.1, 0);
+    redCube.position.set(-1, -1.3, 0);
+    greenCube.position.set(0, -1.8, 0);
+    blueCube.position.set(1, -1.5, 0);
 
     scene.add(redCube);
     scene.add(greenCube);
     scene.add(blueCube);
 
     camera.position.z = 5;
+    camera.position.y = 1;
 
     // Animation
     const animate = () => {
       requestAnimationFrame(animate);
 
       const time = Date.now() * 0.001;
-      const amplitude = 0.15; // Reduced amplitude
+      const amplitude = 0.15;
 
-      // Offset animations
-      redCube.position.y = 0.3 + Math.sin(time) * amplitude;
-      greenCube.position.y = -0.2 + Math.sin(time + (2 * Math.PI / 3)) * amplitude;
-      blueCube.position.y = 0.1 + Math.sin(time + (4 * Math.PI / 3)) * amplitude;
+      // Update the y positions with the new base heights
+      redCube.position.y = -1.3 + Math.sin(time) * amplitude;
+      greenCube.position.y = -1.8 + Math.sin(time + (2 * Math.PI / 3)) * amplitude;
+      blueCube.position.y = -1.5 + Math.sin(time + (4 * Math.PI / 3)) * amplitude;
 
       renderer.render(scene, camera);
     };
