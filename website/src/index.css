@@ -20,22 +20,31 @@ body {
   width: 100vw;
   height: 100vh;
   z-index: 0;
+  transition: filter 0.5s ease;
+}
+
+.scene-container.blurred {
+  filter: blur(10px);
 }
 
 .content-overlay {
   position: relative;
   z-index: 1;
-  padding: 2rem 3rem;
   height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
 .navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
   display: flex;
   justify-content: flex-end;
   gap: 3rem;
-  padding: 1rem 0;
+  padding: 2rem 3rem;
+  z-index: 2;
 }
 
 .nav-link {
@@ -87,6 +96,8 @@ body {
   position: relative;
   flex-grow: 1;
   transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100vh;
+  overflow-y: auto;
 }
 
 .page-container.transitioning {
@@ -94,15 +105,13 @@ body {
 }
 
 .page {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 1;
-  transition: opacity 0.5s ease;
+  position: relative;
+  min-height: 100%;
+  padding-top: 5rem;
 }
 
 .back-button {
-  position: absolute;
+  position: fixed;
   top: 2rem;
   left: 3rem;
   background: none;
@@ -113,6 +122,7 @@ body {
   cursor: pointer;
   padding: 0.4rem 1rem 0.3rem;
   transition: color 0.2s;
+  z-index: 2;
 }
 
 .back-button:hover {
@@ -121,7 +131,7 @@ body {
 
 /* Projects Page Styles */
 .projects-container {
-  padding: 6rem 2rem 2rem;
+  padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
