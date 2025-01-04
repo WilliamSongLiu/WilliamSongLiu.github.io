@@ -136,7 +136,7 @@ const Hero: FC = () => {
             spring of 2025.
           </p>
           <p>
-            When I'm not in class, I love to work on projects in AI, botting, game development,
+            I love to work on projects in AI, botting, game development,
             Web3, and XR.
           </p>
         </div>
